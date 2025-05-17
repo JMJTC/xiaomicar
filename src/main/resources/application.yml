@@ -36,3 +36,12 @@ spring:
 
 server:
   port: 8090
+
+rocketmq:
+  name-server: localhost:9876
+  producer:
+    group: warning-producer-group
+    send-message-timeout: 3000
+    retry-times-when-send-failed: 2
+  consumer:
+    pull-batch-size: 10

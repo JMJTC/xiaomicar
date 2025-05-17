@@ -30,7 +30,7 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("火车票座位管理系统接口文档")
+                .title("小米汽车电池预警")
                 .description("使用Swagger2构建RESTful APIs")
                 .contact(new Contact("jmj", "", ""))
                 .version("1.0")
