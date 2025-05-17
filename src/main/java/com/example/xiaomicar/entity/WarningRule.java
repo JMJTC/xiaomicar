@@ -3,7 +3,7 @@ package com.example.xiaomicar.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
+import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
@@ -14,15 +14,16 @@ import java.time.LocalDateTime;
  * @author jmj
  * @since 2025-05-18
  */
+@Data
 @TableName("warning_rule")
-public class WarningRule implements Serializable {
+public class WarningRule {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * 自增主键
      */
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     /**
@@ -48,7 +49,7 @@ public class WarningRule implements Serializable {
     /**
      * 预警等级(0-5)
      */
-    private Byte warningLevel;
+    private Integer warningLevel;
 
     /**
      * 预警消息
@@ -69,86 +70,6 @@ public class WarningRule implements Serializable {
      * 更新时间
      */
     private LocalDateTime updateTime;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getRuleCode() {
-        return ruleCode;
-    }
-
-    public void setRuleCode(String ruleCode) {
-        this.ruleCode = ruleCode;
-    }
-
-    public String getRuleName() {
-        return ruleName;
-    }
-
-    public void setRuleName(String ruleName) {
-        this.ruleName = ruleName;
-    }
-
-    public String getBatteryType() {
-        return batteryType;
-    }
-
-    public void setBatteryType(String batteryType) {
-        this.batteryType = batteryType;
-    }
-
-    public String getRuleExpression() {
-        return ruleExpression;
-    }
-
-    public void setRuleExpression(String ruleExpression) {
-        this.ruleExpression = ruleExpression;
-    }
-
-    public Byte getWarningLevel() {
-        return warningLevel;
-    }
-
-    public void setWarningLevel(Byte warningLevel) {
-        this.warningLevel = warningLevel;
-    }
-
-    public String getWarningMessage() {
-        return warningMessage;
-    }
-
-    public void setWarningMessage(String warningMessage) {
-        this.warningMessage = warningMessage;
-    }
-
-    public Boolean getIsEnabled() {
-        return isEnabled;
-    }
-
-    public void setIsEnabled(Boolean isEnabled) {
-        this.isEnabled = isEnabled;
-    }
-
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
-    }
 
     @Override
     public String toString() {

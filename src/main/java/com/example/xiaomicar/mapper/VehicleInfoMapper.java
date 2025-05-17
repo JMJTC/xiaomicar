@@ -1,7 +1,7 @@
 package com.example.xiaomicar.mapper;
 
-import com.example.xiaomicar.entity.VehicleInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.example.xiaomicar.entity.VehicleInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

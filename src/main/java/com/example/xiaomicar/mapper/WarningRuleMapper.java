@@ -1,7 +1,7 @@
 package com.example.xiaomicar.mapper;
 
-import com.example.xiaomicar.entity.WarningRule;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.example.xiaomicar.entity.WarningRule;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

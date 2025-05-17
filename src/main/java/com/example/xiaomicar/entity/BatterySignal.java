@@ -3,7 +3,7 @@ package com.example.xiaomicar.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
+import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -15,15 +15,16 @@ import java.time.LocalDateTime;
  * @author jmj
  * @since 2025-05-18
  */
+@Data
 @TableName("battery_signal")
-public class BatterySignal implements Serializable {
+public class BatterySignal {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * 自增主键
      */
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     /**
@@ -75,94 +76,6 @@ public class BatterySignal implements Serializable {
      * 创建时间
      */
     private LocalDateTime createTime;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getVehicleId() {
-        return vehicleId;
-    }
-
-    public void setVehicleId(Long vehicleId) {
-        this.vehicleId = vehicleId;
-    }
-
-    public LocalDateTime getSignalTime() {
-        return signalTime;
-    }
-
-    public void setSignalTime(LocalDateTime signalTime) {
-        this.signalTime = signalTime;
-    }
-
-    public BigDecimal getMx() {
-        return mx;
-    }
-
-    public void setMx(BigDecimal mx) {
-        this.mx = mx;
-    }
-
-    public BigDecimal getMi() {
-        return mi;
-    }
-
-    public void setMi(BigDecimal mi) {
-        this.mi = mi;
-    }
-
-    public BigDecimal getIx() {
-        return ix;
-    }
-
-    public void setIx(BigDecimal ix) {
-        this.ix = ix;
-    }
-
-    public BigDecimal getIi() {
-        return ii;
-    }
-
-    public void setIi(BigDecimal ii) {
-        this.ii = ii;
-    }
-
-    public BigDecimal getSoc() {
-        return soc;
-    }
-
-    public void setSoc(BigDecimal soc) {
-        this.soc = soc;
-    }
-
-    public BigDecimal getSoh() {
-        return soh;
-    }
-
-    public void setSoh(BigDecimal soh) {
-        this.soh = soh;
-    }
-
-    public BigDecimal getTemperature() {
-        return temperature;
-    }
-
-    public void setTemperature(BigDecimal temperature) {
-        this.temperature = temperature;
-    }
-
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
 
     @Override
     public String toString() {

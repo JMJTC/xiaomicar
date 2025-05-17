@@ -3,6 +3,7 @@ package com.example.xiaomicar.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
  * @author jmj
  * @since 2025-05-18
  */
+@Data
 @TableName("warning_info")
 public class WarningInfo implements Serializable {
 
@@ -38,7 +40,7 @@ public class WarningInfo implements Serializable {
     /**
      * 预警等级
      */
-    private Byte warningLevel;
+    private Integer warningLevel;
 
     /**
      * 预警消息
@@ -69,86 +71,6 @@ public class WarningInfo implements Serializable {
      * 创建时间
      */
     private LocalDateTime createTime;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getVehicleId() {
-        return vehicleId;
-    }
-
-    public void setVehicleId(Long vehicleId) {
-        this.vehicleId = vehicleId;
-    }
-
-    public Long getRuleId() {
-        return ruleId;
-    }
-
-    public void setRuleId(Long ruleId) {
-        this.ruleId = ruleId;
-    }
-
-    public Byte getWarningLevel() {
-        return warningLevel;
-    }
-
-    public void setWarningLevel(Byte warningLevel) {
-        this.warningLevel = warningLevel;
-    }
-
-    public String getWarningMessage() {
-        return warningMessage;
-    }
-
-    public void setWarningMessage(String warningMessage) {
-        this.warningMessage = warningMessage;
-    }
-
-    public LocalDateTime getWarningTime() {
-        return warningTime;
-    }
-
-    public void setWarningTime(LocalDateTime warningTime) {
-        this.warningTime = warningTime;
-    }
-
-    public Boolean getIsHandled() {
-        return isHandled;
-    }
-
-    public void setIsHandled(Boolean isHandled) {
-        this.isHandled = isHandled;
-    }
-
-    public LocalDateTime getHandleTime() {
-        return handleTime;
-    }
-
-    public void setHandleTime(LocalDateTime handleTime) {
-        this.handleTime = handleTime;
-    }
-
-    public String getHandleResult() {
-        return handleResult;
-    }
-
-    public void setHandleResult(String handleResult) {
-        this.handleResult = handleResult;
-    }
-
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
 
     @Override
     public String toString() {

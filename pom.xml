@@ -11,8 +11,8 @@
     <groupId>com.example</groupId>
     <artifactId>xiaomicar</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>practice0514</name>
-    <description>practice0514</description>
+    <name>xiaomicar</name>
+    <description>xiaomicar</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -174,6 +174,16 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-client</artifactId>
+            <version>5.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -197,6 +207,14 @@
                 <configuration>
                     <fork>true</fork>
                     <addResources>true</addResources>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>16</source>
+                    <target>16</target>
                 </configuration>
             </plugin>
         </plugins>

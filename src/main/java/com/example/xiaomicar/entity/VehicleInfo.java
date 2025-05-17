@@ -3,7 +3,7 @@ package com.example.xiaomicar.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
+import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -15,15 +15,16 @@ import java.time.LocalDateTime;
  * @author jmj
  * @since 2025-05-18
  */
+@Data
 @TableName("vehicle_info")
-public class VehicleInfo implements Serializable {
+public class VehicleInfo {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * 自增主键
      */
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     /**
@@ -49,7 +50,7 @@ public class VehicleInfo implements Serializable {
     /**
      * 电池健康状态(%)
      */
-    private Byte batteryHealth;
+    private Integer batteryHealth;
 
     /**
      * 创建时间
@@ -60,70 +61,6 @@ public class VehicleInfo implements Serializable {
      * 更新时间
      */
     private LocalDateTime updateTime;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getVid() {
-        return vid;
-    }
-
-    public void setVid(String vid) {
-        this.vid = vid;
-    }
-
-    public String getFrameNumber() {
-        return frameNumber;
-    }
-
-    public void setFrameNumber(String frameNumber) {
-        this.frameNumber = frameNumber;
-    }
-
-    public String getBatteryType() {
-        return batteryType;
-    }
-
-    public void setBatteryType(String batteryType) {
-        this.batteryType = batteryType;
-    }
-
-    public BigDecimal getTotalMileage() {
-        return totalMileage;
-    }
-
-    public void setTotalMileage(BigDecimal totalMileage) {
-        this.totalMileage = totalMileage;
-    }
-
-    public Byte getBatteryHealth() {
-        return batteryHealth;
-    }
-
-    public void setBatteryHealth(Byte batteryHealth) {
-        this.batteryHealth = batteryHealth;
-    }
-
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
-    }
 
     @Override
     public String toString() {
