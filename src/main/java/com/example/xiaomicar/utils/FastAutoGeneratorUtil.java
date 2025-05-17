@@ -54,7 +54,7 @@ public class FastAutoGeneratorUtil {
 
                 //策略配置
                 .strategyConfig(builder -> {
-                    builder.addInclude("vehicle_info", "battery_signal", "warning_rule")
+                    builder.addInclude("vehicle_info", "battery_signal", "warning_rule", "warning_info")
                             .mapperBuilder()
                             .enableMapperAnnotation()
                             .serviceBuilder()
