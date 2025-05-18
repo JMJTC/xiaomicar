@@ -1,6 +1,7 @@
 package com.example.xiaomicar.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.example.xiaomicar.entity.VehicleInfo;
 import com.example.xiaomicar.mapper.VehicleInfoMapper;
 import com.example.xiaomicar.service.impl.VehicleInfoServiceImpl;
@@ -16,7 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -34,11 +35,11 @@ class VehicleInfoServiceTest {
     void setUp() {
         vehicleInfo = new VehicleInfo();
         vehicleInfo.setId(1L);
-        vehicleInfo.setVid("V1D16Char12345");
-        vehicleInfo.setFrameNumber("1");
+        vehicleInfo.setVid("V001");
+        vehicleInfo.setFrameNumber("F001");
         vehicleInfo.setBatteryType("ternary");
         vehicleInfo.setTotalMileage(new BigDecimal("100.00"));
-        vehicleInfo.setBatteryHealth(100);
+        vehicleInfo.setBatteryHealth(95);
     }
 
     @Test
@@ -47,7 +48,7 @@ class VehicleInfoServiceTest {
         when(vehicleInfoMapper.insert(any(VehicleInfo.class))).thenReturn(1);
 
         // 执行测试
-        boolean result = vehicleInfoService.save(vehicleInfo);
+        boolean result = vehicleInfoService.addVehicle(vehicleInfo);
 
         // 验证结果
         assertTrue(result);
@@ -60,7 +61,7 @@ class VehicleInfoServiceTest {
         when(vehicleInfoMapper.updateById(any(VehicleInfo.class))).thenReturn(1);
 
         // 执行测试
-        boolean result = vehicleInfoService.updateById(vehicleInfo);
+        boolean result = vehicleInfoService.updateVehicle(vehicleInfo);
 
         // 验证结果
         assertTrue(result);
@@ -73,7 +74,7 @@ class VehicleInfoServiceTest {
         when(vehicleInfoMapper.deleteById(anyLong())).thenReturn(1);
 
         // 执行测试
-        boolean result = vehicleInfoService.removeById(1L);
+        boolean result = vehicleInfoService.deleteVehicle(1L);
 
         // 验证结果
         assertTrue(result);
@@ -97,15 +98,15 @@ class VehicleInfoServiceTest {
     @Test
     void list_Success() {
         // 准备测试数据
-        List<VehicleInfo> expectedList = Arrays.asList(vehicleInfo);
-        when(vehicleInfoMapper.selectList(any(LambdaQueryWrapper.class))).thenReturn(expectedList);
+        List<VehicleInfo> expectedVehicles = Arrays.asList(vehicleInfo);
+        when(vehicleInfoMapper.selectList(any(LambdaQueryWrapper.class))).thenReturn(expectedVehicles);
 
         // 执行测试
         List<VehicleInfo> result = vehicleInfoService.list();
 
         // 验证结果
         assertNotNull(result);
-        assertEquals(expectedList.size(), result.size());
+        assertEquals(expectedVehicles.size(), result.size());
         verify(vehicleInfoMapper).selectList(any(LambdaQueryWrapper.class));
     }
 } 

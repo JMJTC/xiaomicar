@@ -1,6 +1,7 @@
 package com.example.xiaomicar.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.example.xiaomicar.config.MybatisPlusTestConfig;
 import com.example.xiaomicar.entity.WarningInfo;
 import com.example.xiaomicar.mapper.WarningInfoMapper;
 import com.example.xiaomicar.mq.WarningMessageProducer;
@@ -13,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.test.context.ContextConfiguration;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -24,6 +26,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
+@ContextConfiguration(classes = MybatisPlusTestConfig.class)
 class WarningInfoServiceTest {
 
     @Mock
@@ -53,14 +56,13 @@ class WarningInfoServiceTest {
         warningInfo.setWarningMessage("测试预警消息");
         warningInfo.setWarningTime(LocalDateTime.now());
         warningInfo.setIsHandled(false);
-
-        when(redisTemplate.opsForValue()).thenReturn(valueOperations);
     }
 
     @Test
     void generateWarning_Success() {
         // 准备测试数据
         when(warningInfoMapper.insert(any(WarningInfo.class))).thenReturn(1);
+        when(redisTemplate.opsForValue()).thenReturn(valueOperations);
 
         // 执行测试
         boolean result = warningInfoService.generateWarning(warningInfo);
@@ -69,6 +71,7 @@ class WarningInfoServiceTest {
         assertTrue(result);
         verify(warningInfoMapper).insert(any(WarningInfo.class));
         verify(warningMessageProducer).sendWarningMessage(any(WarningInfo.class));
+        verify(valueOperations).set(anyString(), any(WarningInfo.class), anyLong(), any());
     }
 
     @Test
@@ -76,6 +79,7 @@ class WarningInfoServiceTest {
         // 准备测试数据
         List<WarningInfo> warnings = Arrays.asList(warningInfo);
         when(warningInfoMapper.insert(any(WarningInfo.class))).thenReturn(1);
+        when(redisTemplate.opsForValue()).thenReturn(valueOperations);
 
         // 执行测试
         boolean result = warningInfoService.generateBatchWarnings(warnings);
@@ -84,6 +88,7 @@ class WarningInfoServiceTest {
         assertTrue(result);
         verify(warningInfoMapper, times(warnings.size())).insert(any(WarningInfo.class));
         verify(warningMessageProducer).sendBatchWarningMessages(anyList());
+        verify(valueOperations, times(warnings.size())).set(anyString(), any(WarningInfo.class), anyLong(), any());
     }
 
     @Test
@@ -102,6 +107,7 @@ class WarningInfoServiceTest {
     @Test
     void getLatestWarning_Success() {
         // 准备测试数据
+        when(redisTemplate.opsForValue()).thenReturn(valueOperations);
         when(valueOperations.get(anyString())).thenReturn(null);
         when(warningInfoMapper.selectOne(any(LambdaQueryWrapper.class))).thenReturn(warningInfo);
 
@@ -119,6 +125,7 @@ class WarningInfoServiceTest {
     @Test
     void getLatestWarning_FromCache() {
         // 准备测试数据
+        when(redisTemplate.opsForValue()).thenReturn(valueOperations);
         when(valueOperations.get(anyString())).thenReturn(warningInfo);
 
         // 执行测试

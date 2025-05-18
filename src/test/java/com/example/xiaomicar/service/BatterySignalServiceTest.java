@@ -17,8 +17,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -44,13 +43,13 @@ class BatterySignalServiceTest {
         batterySignal.setId(1L);
         batterySignal.setVehicleId(1L);
         batterySignal.setSignalTime(LocalDateTime.now());
-        batterySignal.setMx(new BigDecimal("3.8"));
-        batterySignal.setMi(new BigDecimal("3.6"));
-        batterySignal.setIx(new BigDecimal("100.0"));
-        batterySignal.setIi(new BigDecimal("80.0"));
-        batterySignal.setSoc(new BigDecimal("80.0"));
-        batterySignal.setSoh(new BigDecimal("95.0"));
-        batterySignal.setTemperature(new BigDecimal("25.0"));
+        batterySignal.setMx(new BigDecimal("100.00"));
+        batterySignal.setMi(new BigDecimal("80.00"));
+        batterySignal.setIx(new BigDecimal("50.00"));
+        batterySignal.setIi(new BigDecimal("30.00"));
+        batterySignal.setSoc(new BigDecimal("90.00"));
+        batterySignal.setSoh(new BigDecimal("95.00"));
+        batterySignal.setTemperature(new BigDecimal("25.00"));
 
         when(redisTemplate.opsForValue()).thenReturn(valueOperations);
     }
