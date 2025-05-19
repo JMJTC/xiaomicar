@@ -6,7 +6,7 @@ Github: [JMJTC/xiaomicar](https://github.com/JMJTC/xiaomicar)
 
 #### 系统概述
 
-该系统为小米汽车相关的管理系统，主要负责处理车辆信息、电池信号记录、预警规则以及预警信息等业务。系统包含数据存储、业务逻辑处理和前端交互等部分，通过 Spring Boot 框架搭建，结合 MyBatis-Plus 进行数据库操作，Redis 用于缓存，RocketMQ 或 RabbitMQ 用于消息队列。
+该系统为小米汽车相关的管理系统，主要负责处理车辆信息、电池信号记录、预警规则以及预警信息等业务。系统包含数据存储、业务逻辑处理和前端交互等部分，通过 Spring Boot 框架搭建，结合 MyBatis-Plus 进行数据库操作，Redis 用于缓存，RocketMQ  用于消息队列。
 
 #### 系统架构
 
